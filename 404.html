@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>404 — Page not found | Puneet Khanna</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .error-page{min-height:calc(100vh - 82px);display:flex;align-items:center;justify-content:center;text-align:center;padding:60px 20px}
+    .error-code{font:800 140px/1 'Manrope';letter-spacing:-.05em;-webkit-text-stroke:2px rgba(200,149,46,.5);color:transparent;display:block;margin-bottom:8px}
+    .error-msg{font:700 28px/1.3 'Manrope';color:#eaf0e8;margin:0 0 12px}
+    .error-sub{font-size:16px;color:#a8a8a0;margin:0 0 36px;line-height:1.7}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Puneet Khanna home"><span class="brand-mark">PK</span><span>PUNEET KHANNA<span class="brand-sub">SALESFORCE · PRODUCT · TRANSFORMATION</span></span></a>
+    <nav class="nav-links"><a href="/#about">About</a><a href="/#expertise">Expertise</a><a href="/#experience">Experience</a><a href="/#impact">Impact</a><a href="/#credentials">Credentials</a><a class="nav-cta" href="/#contact">Let's connect <span>↗</span></a></nav>
+  </header>
+  <main>
+    <div class="section-wrap error-page">
+      <div>
+        <span class="error-code">404</span>
+        <p class="error-msg">Page not found</p>
+        <p class="error-sub">The page you're looking for doesn't exist or has been moved.</p>
+        <a class="button button-primary" href="/">Back to home <span>↘</span></a>
+      </div>
+    </div>
+  </main>
+  <footer class="footer"><div class="section-wrap footer-inner"><a class="brand footer-brand" href="/"><span class="brand-mark">PK</span><span>PUNEET KHANNA<span class="brand-sub">PERSONAL PORTFOLIO</span></span></a><span>© <span id="year"></span> Puneet Khanna. All rights reserved.</span></div></footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -40,6 +40,9 @@
 .impact-card h3{font:700 15px 'Manrope';color:#eaf0e8;margin:0 0 10px}
 .impact-card p{font-size:13px;line-height:1.8;color:#a0a09a;margin:0 0 20px}
 .impact-source{font-size:11px;letter-spacing:.12em;color:#9a9a92;font-weight:700}
+.case-note{margin:0 0 18px}
+.case-note p{font-size:13px;line-height:1.75;color:#a0a09a;margin:0 0 8px}
+.case-label{display:inline-block;font:700 10px/1 'Manrope';letter-spacing:.13em;color:#c8952e;margin-right:7px;text-transform:uppercase}
 .education-block{margin-top:34px;border-top:1px solid #213020;padding-top:20px}
 .education-block h3{font:700 15px 'Manrope';margin:0 0 14px;color:#c8c8c0}
 .education-block p{font-size:13px;line-height:1.7;color:#a0a09a;margin:0 0 12px}
@@ -86,3 +89,26 @@
 .form-status{font-size:13px;line-height:1.6;margin:0;display:none}
 .form-status.success{color:#7aaa68;display:block}
 .form-status.error{color:#c87870;display:block}
+
+.co-mark{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:6px;background:#ffffff;padding:3px;flex-shrink:0;margin-right:6px;overflow:hidden}
+.co-mark img{width:30px;height:30px;object-fit:contain;display:block}.co-mark--cover img{width:36px;height:36px;object-fit:cover;object-position:center}
+
+.nav-links a.active{color:#c8952e}
+
+a.exp-arrow{text-decoration:none;transition:transform .2s,color .2s}
+a.exp-arrow:hover{transform:scale(1.3);color:#e0b050}
+
+@keyframes heroIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.hero-copy .eyebrow{animation:heroIn .6s ease .05s both}
+.hero-copy h1{animation:heroIn .65s ease .2s both}
+.hero-copy .hero-lede{animation:heroIn .6s ease .35s both}
+.hero-copy .hero-actions{animation:heroIn .6s ease .5s both}
+.hero-copy .hero-proof{animation:heroIn .6s ease .65s both}
+.hero-copy .hero-note{animation:heroIn .6s ease .78s both}
+@media(prefers-reduced-motion:reduce){.hero-copy *{animation:none!important;opacity:1!important}}
+
+.experience-item{transition:background .25s}
+.experience-item:hover{background:rgba(200,149,46,.03)}
+
+.toast{position:fixed;bottom:88px;left:50%;transform:translateX(-50%) translateY(8px);background:#131c12;border:1px solid rgba(200,149,46,.4);color:#eaf0e8;padding:11px 22px;border-radius:50px;font-size:13px;font-weight:600;opacity:0;transition:opacity .28s,transform .28s;z-index:50;white-space:nowrap;pointer-events:none}
+.toast.visible{opacity:1;transform:translateX(-50%) translateY(0)}

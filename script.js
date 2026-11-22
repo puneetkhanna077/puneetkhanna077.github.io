@@ -31,6 +31,55 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.08 });
 revealEls.forEach(el => observer.observe(el));
 
+const countEls = document.querySelectorAll('strong[data-count]');
+const countObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const el = entry.target;
+    const target = parseInt(el.dataset.count);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1400;
+    const start = performance.now();
+    const tick = now => {
+      const p = Math.min((now - start) / duration, 1);
+      el.textContent = Math.floor((1 - Math.pow(1 - p, 3)) * target) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+    countObserver.unobserve(el);
+  });
+}, {threshold: 0.5});
+countEls.forEach(el => countObserver.observe(el));
+
+const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+const sectionObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(a => a.classList.remove('active'));
+      document.querySelector(`.nav-links a[href="#${entry.target.id}"]`)?.classList.add('active');
+    }
+  });
+}, {rootMargin: '-20% 0px -70% 0px'});
+document.querySelectorAll('section[id]').forEach(s => sectionObserver.observe(s));
+
+function showToast(msg) {
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.classList.add('visible'), 10);
+  setTimeout(() => { t.classList.remove('visible'); setTimeout(() => t.remove(), 300); }, 2500);
+}
+const emailCopy = document.getElementById('emailCopy');
+emailCopy?.addEventListener('click', e => {
+  e.preventDefault();
+  navigator.clipboard.writeText(emailCopy.dataset.email).then(() => {
+    showToast('Email copied to clipboard!');
+  }).catch(() => {
+    window.location.href = emailCopy.href;
+  });
+});
+
 const backToTop = document.getElementById('backToTop');
 window.addEventListener('scroll', () => {
   backToTop?.classList.toggle('visible', window.scrollY > 400);
