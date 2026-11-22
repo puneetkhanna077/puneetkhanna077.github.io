@@ -108,8 +108,8 @@ contactForm?.addEventListener('submit', async e => {
       const data = await res.json().catch(() => ({}));
       throw new Error(data.error || `HTTP ${res.status}`);
     }
-  } catch(err) {
-    formStatus.textContent = `Error: ${err.message}. Please email puneet.khanna077@gmail.com directly.`;
+  } catch {
+    formStatus.textContent = 'Something went wrong. Please email puneet.khanna077@gmail.com directly.';
     formStatus.className = 'form-status error';
   }
   btn.innerHTML = originalHTML;
