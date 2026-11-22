@@ -30,3 +30,36 @@ const observer = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.08 });
 revealEls.forEach(el => observer.observe(el));
+
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  backToTop?.classList.toggle('visible', window.scrollY > 400);
+}, {passive: true});
+backToTop?.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
+
+const contactForm = document.querySelector('.contact-form');
+const formStatus = contactForm?.querySelector('.form-status');
+contactForm?.addEventListener('submit', async e => {
+  e.preventDefault();
+  const btn = contactForm.querySelector('.form-submit');
+  const originalHTML = btn.innerHTML;
+  btn.innerHTML = 'Sending…';
+  btn.disabled = true;
+  try {
+    const res = await fetch(contactForm.action, {
+      method: 'POST',
+      body: new FormData(contactForm),
+      headers: {Accept: 'application/json'}
+    });
+    if (res.ok) {
+      contactForm.reset();
+      formStatus.textContent = "Message sent — I'll be in touch soon.";
+      formStatus.className = 'form-status success';
+    } else { throw new Error(); }
+  } catch {
+    formStatus.textContent = 'Something went wrong. Please email puneet.khanna077@gmail.com directly.';
+    formStatus.className = 'form-status error';
+  }
+  btn.innerHTML = originalHTML;
+  btn.disabled = false;
+});
