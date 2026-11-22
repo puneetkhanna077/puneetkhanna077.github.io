@@ -45,8 +45,10 @@
 .case-label{display:inline-block;font:700 10px/1 'Manrope';letter-spacing:.13em;color:#c8952e;margin-right:7px;text-transform:uppercase}
 .education-block{margin-top:34px;border-top:1px solid #213020;padding-top:20px}
 .education-block h3{font:700 15px 'Manrope';margin:0 0 14px;color:#c8c8c0}
-.education-block p{font-size:13px;line-height:1.7;color:#a0a09a;margin:0 0 12px}
+.education-block p{font-size:13px;line-height:1.7;color:#a0a09a;margin:0}
 .education-block strong{color:#eaf0e8}
+.edu-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px}
+.edu-item .co-mark{margin-top:2px;margin-right:0;flex-shrink:0}
 .extras-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:start}
 .extras-grid h2{margin:28px 0 0}
 .extras-content{padding-top:15px}
