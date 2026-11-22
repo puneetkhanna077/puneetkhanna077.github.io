@@ -97,8 +97,8 @@ contactForm?.addEventListener('submit', async e => {
   try {
     const res = await fetch(contactForm.action, {
       method: 'POST',
-      body: new FormData(contactForm),
-      headers: {Accept: 'application/json'}
+      body: JSON.stringify(Object.fromEntries(new FormData(contactForm))),
+      headers: {'Accept': 'application/json', 'Content-Type': 'application/json'}
     });
     if (res.ok) {
       contactForm.reset();
