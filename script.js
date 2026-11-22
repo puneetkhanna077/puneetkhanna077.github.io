@@ -9,3 +9,24 @@ nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => 
   toggle?.setAttribute('aria-expanded', 'false');
 }));
 document.getElementById('year').textContent = new Date().getFullYear();
+
+const revealTargets = [
+  '.section-heading',
+  '.about-grid',
+  '.capability-grid .cap-card',
+  '.experience-item',
+  '.impact-grid',
+  '.credentials-grid',
+  '.extras-grid .extras-content',
+];
+const revealEls = document.querySelectorAll(revealTargets.join(','));
+revealEls.forEach(el => el.classList.add('reveal'));
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08 });
+revealEls.forEach(el => observer.observe(el));
